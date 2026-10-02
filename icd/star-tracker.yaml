@@ -1,0 +1,23 @@
+# Interface Control Document of a (fictional) star tracker.
+# The simulator and the tests both read this file: it is the single source of truth.
+device: StarTracker ST-200
+revision: "1.0"
+
+modes: [STANDBY, TRACKING, CALIBRATION]
+
+commands:
+  SET_MODE:
+    params:
+      mode: { type: enum, values: [STANDBY, TRACKING, CALIBRATION] }
+
+  SET_EXPOSURE:
+    forbiddenIn: [CALIBRATION]
+    params:
+      exposure_ms: { type: integer, min: 1, max: 500, unit: ms }
+
+telemetry:
+  mode: { type: enum, values: [STANDBY, TRACKING, CALIBRATION] }
+  temperature: { type: number, min: -40, max: 85, unit: degC, warnAbove: 70 }
+  exposure_ms: { type: integer, min: 1, max: 500, unit: ms }
+  counter: { type: integer, min: 0, max: 65535 }
+  temp_warn: { type: boolean }

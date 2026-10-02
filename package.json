@@ -1,0 +1,23 @@
+{
+  "name": "icd-device-tests",
+  "version": "1.0.0",
+  "description": "Playwright + TypeScript tests for a simulated satellite device driven by its ICD",
+  "author": "Anton Godovanik",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "simulator": "tsx src/server.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "playwright test",
+    "test:icd": "playwright test --project=icd",
+    "test:api": "playwright test --project=api",
+    "test:ui": "playwright test --project=ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/node": "22.15.3",
+    "tsx": "4.19.4",
+    "typescript": "5.8.3",
+    "yaml": "2.8.0"
+  }
+}
